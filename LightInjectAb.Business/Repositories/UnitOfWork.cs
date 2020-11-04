@@ -7,51 +7,27 @@ namespace LightInjectAb.Business.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IDbContext _dbContext;
-        //private readonly Scope _scope;//Wanted code
+        private readonly IServiceFactory _serviceFactory;
 
-        public UnitOfWork(IDbContext dbContext)
+        public UnitOfWork(IServiceFactory serviceFactory)//Wanted code
         {
-            _dbContext = dbContext;
+            _serviceFactory = serviceFactory;
         }
-        //public UnitOfWork(IDbContext dbContext, Scope scope)//Wanted code
-        //{
-        //    _dbContext = dbContext;
-        //    _scope = scope;
-        //}
 
-        public IGenericRepository<T> RepositoryFor<T>(bool ignoreSoftDeleteFilter = false) where T : class,  new()
+        public IGenericRepository<T> RepositoryFor<T>(bool ignoreSoftDeleteFilter = false) where T : class, new()
         {
-            /* Current code: retrieve repo from container. This results in exception when accessed from the web api project because of a missing scope.
-             * Wanted code: we should be able to access the scope so the repo can be retrieved from the active scope
-             */
-            var repo = ContainerManager.Container.GetInstance<IGenericRepository<T>>();
+
+            var repo = _serviceFactory.GetInstance<IGenericRepository<T>>();
 
             //Example of wanted code: use scope when running application starts scopes (eg. web api) or use root container if no scopes are used (eg. console app)
             //var repo = (_scope ?? ContainerManager.Container).GetInstance<IGenericRepository<T>>();
 
             return repo;
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        private bool _disposed;
-        public virtual void Dispose(bool disposing)
-        {
-            if (!_disposed && disposing)
-            {
-                _dbContext.Dispose();
-            }
-
-            _disposed = true;
-        }
     }
 
 
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         IGenericRepository<T> RepositoryFor<T>(bool ignoreSoftDeleteFilter = false) where T : class, new();
 
