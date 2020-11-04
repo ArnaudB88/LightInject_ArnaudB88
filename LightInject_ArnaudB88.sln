@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightInjectAb.Tests", "Ligh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightInjectAb.Web.Api", "LightInjectAb.Web.Api\LightInjectAb.Web.Api.csproj", "{AFD17F6D-A799-4FD4-AB89-E60E16FB3A1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightInjectAb.Console", "LightInjectAb.Console\LightInjectAb.Console.csproj", "{26641622-9FD3-4EB8-A0BD-C05045B69A9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AFD17F6D-A799-4FD4-AB89-E60E16FB3A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD17F6D-A799-4FD4-AB89-E60E16FB3A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD17F6D-A799-4FD4-AB89-E60E16FB3A1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26641622-9FD3-4EB8-A0BD-C05045B69A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26641622-9FD3-4EB8-A0BD-C05045B69A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26641622-9FD3-4EB8-A0BD-C05045B69A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26641622-9FD3-4EB8-A0BD-C05045B69A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

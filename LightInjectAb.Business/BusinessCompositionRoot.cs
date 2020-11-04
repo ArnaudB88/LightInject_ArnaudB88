@@ -11,11 +11,11 @@ namespace LightInjectAb.Business
         public void Compose(IServiceRegistry registry)
         {
             //DbContext should be registered as per scope
-            registry.RegisterScoped<IDbContext,DbContext>();
+            registry.RegisterScoped<IDbContext, DbContext>();
 
-            registry.Register(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            registry.RegisterScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-            registry.Register<IUnitOfWork, UnitOfWork>();
+            registry.RegisterScoped<IUnitOfWork>(factory => new UnitOfWork(factory));
 
             registry.Register<IFoo, Foo>();
         }
