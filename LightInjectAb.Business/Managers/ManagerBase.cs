@@ -77,7 +77,7 @@ namespace LightInjectAb.Business.Managers
 
         private async Task MapDetailsAsync<TDto>(TDto dto, TDomain domainEntity, bool insertMode) where TDto : DtoBase
         {
-            var detailsMapper = ContainerManager.Container.TryGetInstance<IDetailsMapper<TDto, TDomain>>();
+            var detailsMapper = Uow.ServiceFactory.TryGetInstance<IDetailsMapper<TDto, TDomain>>();
 
             //Wanted code: working with the actual Scope
             //var detailsMapper = _serviceFactory.TryGetInstance<IDetailsMapper<TDto, TDomain>>();
@@ -90,21 +90,21 @@ namespace LightInjectAb.Business.Managers
 
         private void UpdateFieldsBeforeMap<TDto>(TDto dto, TDomain domainEntity, bool insertMode) where TDto : DtoBase
         {
-            var beforeMapFieldsUpdater = ContainerManager.Container.TryGetInstance<IBeforeMapFieldsUpdater<TDto, TDomain>>();
+            var beforeMapFieldsUpdater = Uow.ServiceFactory.TryGetInstance<IBeforeMapFieldsUpdater<TDto, TDomain>>();
 
             beforeMapFieldsUpdater?.UpdateFieldsBeforeMap(dto, domainEntity, insertMode);
         }
 
         private void UpdateFieldsAfterMap<TDto>(TDto dto, TDomain updatedDomainEntity, bool insertMode) where TDto : DtoBase
         {
-            var afterMapFieldsUpdater = ContainerManager.Container.TryGetInstance<IAfterMapFieldsUpdater<TDto, TDomain>>();
+            var afterMapFieldsUpdater = Uow.ServiceFactory.TryGetInstance<IAfterMapFieldsUpdater<TDto, TDomain>>();
 
             afterMapFieldsUpdater?.UpdateFieldsAfterMap(dto, updatedDomainEntity, insertMode);
         }
 
         private async Task UpdateFieldsAfterMapDetailsAsync<TDto>(TDto dto, TDomain updatedDomainEntity, bool insertMode) where TDto : DtoBase
         {
-            var afterMapDetailsFieldsUpdater = ContainerManager.Container.TryGetInstance<IAfterMapDetailsFieldsUpdater<TDto, TDomain>>();
+            var afterMapDetailsFieldsUpdater = Uow.ServiceFactory.TryGetInstance<IAfterMapDetailsFieldsUpdater<TDto, TDomain>>();
 
             if (afterMapDetailsFieldsUpdater != null)
             {
