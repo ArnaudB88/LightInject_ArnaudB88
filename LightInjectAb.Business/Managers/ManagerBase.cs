@@ -79,6 +79,9 @@ namespace LightInjectAb.Business.Managers
         {
             var detailsMapper = ContainerManager.Container.TryGetInstance<IDetailsMapper<TDto, TDomain>>();
 
+            //Wanted code: working with the actual Scope
+            //var detailsMapper = _serviceFactory.TryGetInstance<IDetailsMapper<TDto, TDomain>>();
+
             if (detailsMapper != null)
             {
                 await detailsMapper.MapDetailsAsync(dto, domainEntity, insertMode);
