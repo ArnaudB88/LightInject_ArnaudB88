@@ -9,7 +9,7 @@ namespace LightInjectAb.Business.Managers
 {
     public class DeviceManager : ManagerBase<Device>, IDeviceManager
     {
-        public DeviceManager(IUnitOfWork uow)
+        public DeviceManager(IUnitOfWork uow)//in actual code a lot more parameters
             : base(uow)
         {
         }

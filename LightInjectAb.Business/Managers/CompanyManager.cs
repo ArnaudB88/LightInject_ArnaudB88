@@ -9,9 +9,12 @@ namespace LightInjectAb.Business.Managers
 {
     public class CompanyManager : ManagerBase<Company>, ICompanyManager
     {
-        public CompanyManager(IUnitOfWork uow)
+        private readonly IFoo _foo;
+
+        public CompanyManager(IUnitOfWork uow, IFoo foo)//in actual code a lot more parameters
             : base(uow)
         {
+            _foo = foo;
         }
 
     }
