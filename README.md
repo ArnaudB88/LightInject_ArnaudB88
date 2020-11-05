@@ -17,5 +17,5 @@ Example 2: (not fixed)
 - exception occurs in LightInjectAb.Business.Managers.ManagerBase.MapDetailsAsync()
 
 The created unit tests, executing same code, do not throw an exception:
-LightInjectAb.Tests.Issue549.GetRepository_Should_Work()
-LightInjectAb.Tests.Issue549.InsertOrUpdateAsync_Should_Work()
+- LightInjectAb.Tests.Issue549.GetRepository_Should_Work()
+- LightInjectAb.Tests.Issue549.InsertOrUpdateAsync_Should_Work()
