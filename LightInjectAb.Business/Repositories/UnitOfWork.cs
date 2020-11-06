@@ -35,6 +35,9 @@ namespace LightInjectAb.Business.Repositories
         }
 
         private bool _disposed;
+
+        public IServiceFactory ServiceFactory => _serviceFactory;
+
         public virtual void Dispose(bool disposing)
         {
             if (!_disposed && disposing)
@@ -49,6 +52,8 @@ namespace LightInjectAb.Business.Repositories
 
     public interface IUnitOfWork : IDisposable
     {
+        public IServiceFactory ServiceFactory { get; }
+
         IGenericRepository<T> RepositoryFor<T>(bool ignoreSoftDeleteFilter = false) where T : class, IEntityBase, new();
 
     }
